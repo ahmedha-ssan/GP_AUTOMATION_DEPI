@@ -11,6 +11,7 @@ public class LoginPage {
     //init my web driver
     WebDriver driver;
     WebDriverWait wait;
+
     //define my locators
     By userName = By.name("username");
     By Password = By.name("password");

@@ -2,20 +2,36 @@ package Login;
 import Base.baseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
+
+import java.time.Duration;
 
 
 public class LoginTests extends baseTest{
     By userName = By.name("username");
-    @Test()
-    public void Login_TC1(){
-        String username = "Admin";
-        String password = "admin123";
+
+    @DataProvider(name = "loginData")
+    public Object[][] loginDataProvider() {
+        return new Object[][]{
+                {"Admin", "admin123"},  // Valid credentials
+//                {"InvalidUser", "admin123"},  // Invalid username
+//                {"Admin", "wrongPassword"},  // Invalid password
+//                {"", ""}  // Empty username and password
+        };
+    }
+
+    @Test(dataProvider = "loginData")
+    public void Login_TC1(String username, String password){
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(userName));
         loginPage.userNameField(username)
                 .passwordField(password)
                 .loginButton();
     }
+    
 }
 
 
