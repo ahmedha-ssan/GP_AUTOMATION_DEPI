@@ -1,16 +1,13 @@
 package Recruitment;
 
 import Base.baseTest;
-import Pages.RecruitmentPage;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import Pages.Recruitment.RecruitmentPage;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class RecruitmentTests extends baseTest {
     RecruitmentPage recruitmentPage;
 
-    @Test(priority = 1)
+    @Test(dependsOnMethods = {"Login.LoginTests.Login_TC1"}, priority = 2, description = "Verify adding a new candidate with valid data")
     public void addCandidate_TC1() {
         recruitmentPage = new RecruitmentPage(driver);
 
@@ -21,7 +18,7 @@ public class RecruitmentTests extends baseTest {
         String jobVacancy = "test";
         String email = "Ahmed@g.com";
         String contactNumber = "011";
-        String resumePath = "path/to/ahmedHassanCV.pdf"; // Replace with the actual path
+        String resumePath = "C:\\Users\\ammod\\Downloads\\YAT235.pdf"; // Replace with the actual path
         String keywords = "|";
         String applicationDate = "2024-10-10";
         String note = "I'm the best person for that vacancy";
@@ -32,11 +29,9 @@ public class RecruitmentTests extends baseTest {
                 .clickAddButton()
                 .enterCandidateDetails(firstName, middleName, lastName, jobVacancy, email, contactNumber,
                         resumePath, keywords, applicationDate, note)
-                .uploadResumeWithRobot(resumePath)
                 .clickSaveButton();
 
         // Assertion
-        //Assert.assertTrue(recruitmentPage.isCandidateAddedSuccessfully(), "The candidate was not added successfully.");
+        // Assert.assertTrue(recruitmentPage.isCandidateAddedSuccessfully(), "The candidate was not added successfully.");
     }
-
 }

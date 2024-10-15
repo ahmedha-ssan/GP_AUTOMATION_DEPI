@@ -1,4 +1,4 @@
-package Pages;
+package Pages.Recruitment;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,8 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.util.concurrent.TimeUnit;
 import java.time.Duration;
 
 public class RecruitmentPage {
@@ -33,6 +31,8 @@ public class RecruitmentPage {
     By noteField = By.xpath("//textarea[@placeholder=\"Type here\"]");
     By checkButton = By.xpath("    //label[contains(text(),'Consent to keep data')]");
     By saveButton = By.xpath("//button[@type=\"submit\"]");
+
+
 
     // Constructor
     public RecruitmentPage(WebDriver driver) {

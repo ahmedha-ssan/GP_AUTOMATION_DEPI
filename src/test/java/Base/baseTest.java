@@ -25,7 +25,7 @@ public class baseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         //wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         loginPage = new LoginPage(driver);
-    }
+        }
 //
 //    @AfterMethod
 //    public void screenShot(ITestResult result) {

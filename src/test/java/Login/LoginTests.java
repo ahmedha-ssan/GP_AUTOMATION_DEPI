@@ -1,6 +1,7 @@
 package Login;
 import Base.baseTest;
-import Pages.RecruitmentPage;
+import Data.loginData;
+import Pages.Recruitment.RecruitmentPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,19 +15,20 @@ public class LoginTests extends baseTest{
     By userName = By.name("username");
     RecruitmentPage recruitmentPage;
 
-    @DataProvider(name = "loginData")
-    public Object[][] loginDataProvider() {
-        return new Object[][]{
-                {"Admin", "admin123"},  // Valid credentials
-//                {"InvalidUser", "admin123"},  // Invalid username
-//                {"Admin", "wrongPassword"},  // Invalid password
-//                {"", ""}  // Empty username and password
-        };
-    }
+//    @DataProvider(name = "loginData")
+//    public Object[][] loginDataProvider() {
+//        return new Object[][]{
+//                {"Admin", "admin123"},  // Valid credentials
+////                {"InvalidUser", "admin123"},  // Invalid username
+////                {"Admin", "wrongPassword"},  // Invalid password
+////                {"", ""}  // Empty username and password
+//        };
+//    }
 
-    @Test(dataProvider = "loginData",priority = 1)
-    public void Login_TC1(String username, String password){
-
+    @Test(priority = 1)
+    public void Login_TC1(){
+        String username = loginData.USERNAME;
+        String password = loginData.PASSWORD;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(userName));
         loginPage.userNameField(username)
@@ -34,7 +36,7 @@ public class LoginTests extends baseTest{
                 .loginButton();
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, description = "Verify adding a new candidate with valid data")
     public void addCandidate_TC1() {
         recruitmentPage = new RecruitmentPage(driver);
 
