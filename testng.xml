@@ -2,11 +2,11 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Suite1" verbose="1">
-    <test name="testOne">
-        <classes>
-            <class name="test"/>
-        </classes>
-    </test >
-
+<suite name="Test Suite">
+<test name="Login and Recruitment Tests">
+    <classes>
+        <class name="Login.LoginTests"/>
+        <class name="Recruitment.RecruitmentTests"/>
+    </classes>
+</test>
 </suite>
