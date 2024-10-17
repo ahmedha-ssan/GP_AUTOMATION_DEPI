@@ -1,14 +1,14 @@
 package Base;
 
+import Data.loginData;
 import Pages.LoginPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import org.testng.ITestResult;
-import org.testng.annotations.BeforeSuite;
 
 import java.time.Duration;
 
@@ -16,6 +16,7 @@ public class baseTest {
     protected WebDriverWait wait;
     protected WebDriver driver;
     protected LoginPage loginPage;
+    By userName = By.name("username");
 
     @BeforeClass
     public void setUp(){
@@ -25,7 +26,16 @@ public class baseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         //wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         loginPage = new LoginPage(driver);
+        String username = loginData.USERNAME;
+        String password = loginData.PASSWORD;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(userName));
+        loginPage.userNameField(username)
+                .passwordField(password)
+                .loginButton();
         }
+
+
 //
 //    @AfterMethod
 //    public void screenShot(ITestResult result) {

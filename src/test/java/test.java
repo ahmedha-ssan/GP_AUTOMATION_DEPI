@@ -19,10 +19,6 @@ public class test {
         System.out.println("Before Method");
     }
 
-    @Test
-    public void testCase1() {
-        System.out.println("Executing Test Case 1");
-    }
 
     @Test
     public void testCase2() {

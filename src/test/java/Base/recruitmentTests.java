@@ -1,23 +1,22 @@
-package Recruitment;
+package Base;
 
-import Base.baseTest;
-import Pages.Recruitment.RecruitmentPage;
+import Pages.RecruitmentPage;
 import org.testng.annotations.Test;
 
-public class RecruitmentTests extends baseTest {
+public class recruitmentTests extends baseTest {
     RecruitmentPage recruitmentPage;
 
-    @Test(dependsOnMethods = {"Login.LoginTests.Login_TC1"}, priority = 2, description = "Verify adding a new candidate with valid data")
-    public void addCandidate_TC1() {
+    @Test(description = "Verify adding a new candidate with valid data")
+    public void addCandidate_TC1() throws InterruptedException {
         recruitmentPage = new RecruitmentPage(driver);
 
         // Test data
         String firstName = "Ahmed";
-        String middleName = "A";
+        String middleName = "Abdelhamid";
         String lastName = "Hassan";
-        String jobVacancy = "test";
+        String jobVacancy = "Automation Engineer";
         String email = "Ahmed@g.com";
-        String contactNumber = "011";
+        String contactNumber = "01128793499";
         String resumePath = "C:\\Users\\ammod\\Downloads\\YAT235.pdf"; // Replace with the actual path
         String keywords = "|";
         String applicationDate = "2024-10-10";
@@ -30,8 +29,5 @@ public class RecruitmentTests extends baseTest {
                 .enterCandidateDetails(firstName, middleName, lastName, jobVacancy, email, contactNumber,
                         resumePath, keywords, applicationDate, note)
                 .clickSaveButton();
-
-        // Assertion
-        // Assert.assertTrue(recruitmentPage.isCandidateAddedSuccessfully(), "The candidate was not added successfully.");
     }
 }

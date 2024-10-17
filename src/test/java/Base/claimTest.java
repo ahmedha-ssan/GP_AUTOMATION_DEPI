@@ -1,6 +1,4 @@
-package Cliam;
-
-import Base.baseTest;
+package Base;
 
 public class claimTest extends baseTest {
 

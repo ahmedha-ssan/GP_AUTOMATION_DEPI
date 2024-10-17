@@ -5,8 +5,8 @@
 <suite name="Test Suite">
 <test name="Login and Recruitment Tests">
     <classes>
-        <class name="Login.LoginTests"/>
-        <class name="Recruitment.RecruitmentTests"/>
+<!--        <class name="Login.LoginTests"/>-->
+<!--        <class name="Recruitment.RecruitmentTests"/>-->
     </classes>
 </test>
 </suite>
