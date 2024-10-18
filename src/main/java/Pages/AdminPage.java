@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,14 +15,18 @@ public class AdminPage {
     //define my locators
     By adminModule = By.xpath("//span[text()='Admin']");
     By user_managment_Tab = By.xpath("//span[contains(text(),'User Management ')]");
-    // By user_DropDown = By.xpath("//a[contains(text(),'Candidates')]");
+    By users_choice = By.xpath("    //a[@class='oxd-topbar-body-nav-tab-link' and contains(text(),'Users')]");
+    //a[@class='oxd-topbar-body-nav-tab-link' and contains(text(),'Users')]
 
-    By addButton = By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary']");
+    By addButton = By.xpath("    //a[@class='oxd-topbar-body-nav-tab-link' and contains(text(),'Users')]");
 
 /////
 
     //div[@class='oxd-select-text oxd-select-text--active']
-    By UserRoleField = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[1]/div/div[2]/div/div/div[1]");
+    By UserRoleDropdown = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[1]/div/div[2]/div/div/div[1]");
+    By UserRolechoice = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[1]/div/div[2]/div/div/div[1]");
+
+
     By Employee_NameField = By.xpath("//input[@placeholder=\"Type for hints...\"]");
 
     By StatusField = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[3]/div/div[2]/div/div/div[1]");
@@ -34,69 +39,24 @@ public class AdminPage {
 
     public AdminPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    public void navigateToAdmin() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        driver.findElement(adminModule).click();
+    }
+
+    public void clickOnUsersTab() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+
+        WebElement usermanagmenttab_Element = driver.findElement(user_managment_Tab);
+        usermanagmenttab_Element.click();
+        WebElement userschoice_Element = driver.findElement(users_choice);
+        userschoice_Element.click();
+
     }
 
 
 
-    // Navigate to Users module
-    public AdminPage navigateToAdmin() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(adminModule)).click();
-        return this;
-    }
-    // Navigate to Candidates tab
-    public AdminPage clickOnUsesrsTab() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(user_managment_Tab)).click();
-        return this;
-    }
-
-    public AdminPage clickAddButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(addButton)).click();
-        return this;
-    }
-
-
-    public AdminPage enterUsersDetails(String User_Role, String Employee_Name, String Status,
-                                       String Username, String Password, String ConfirmPassword)
-    {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(UserRoleField)).sendKeys(User_Role);
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(Employee_NameField)).sendKeys(Employee_Name);
-
-        driver.findElement(UserRoleField).sendKeys(User_Role);
-        driver.findElement(Employee_NameField).sendKeys(Employee_Name);
-        driver.findElement(StatusField).sendKeys(Status);
-        driver.findElement(UsernameField).sendKeys(Username);
-//        wait.until(ExpectedConditions.elementToBeClickable(jobVacancyDropdown)).click();
-//        By jobVacancyOption = By.xpath("//div[contains(text(),'Senior QA Lead')]"); // Ensure this matches your expected option
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(jobVacancyOption)).click();
-
-        driver.findElement(PasswardField).sendKeys(Password);
-        driver.findElement(ConfirmUsernameField).sendKeys(ConfirmPassword);
-
-
-        //use Robot class with Keypress and keyrelease
-//
-//        WebElement webElement= driver.findElement(resumeUploadField);
-//
-//        webElement.sendKeys(resumePath);
-
-
-
-
-
-
-
-//        WebElement date = driver.findElement(dateOfApplicationField);
-//        date.clear();
-        //date.sendKeys(applicationDate);
-        return this;
-    }
-    public AdminPage clickSaveButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(saveButton)).click();
-        return this;
-    }
 }

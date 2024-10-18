@@ -1,9 +1,7 @@
 package Base;
 
 import Data.TestData;
-import Pages.ClaimPage;
-import Pages.LoginPage;
-import Pages.RecruitmentPage;
+import Pages.*;
 import Tests.LoginTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +19,8 @@ public class baseTest {
     protected RecruitmentPage recruitmentPage;
     protected LoginTest loginTest;
     protected ClaimPage claimPage;
-
+    protected AdminPage adminPage;
+    protected DashboardPage dashboardPage;
     By userName = By.name("username");
 
     @BeforeTest

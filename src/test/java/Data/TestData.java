@@ -13,6 +13,19 @@ public class TestData {
                 },
         };
     }
+
+    @DataProvider(name = "adminTestData")
+    public Object[][] adminTestData() {
+        return new Object[][]{
+                {
+                        "hanan hendawy"
+                        ,"hanan"
+                        ,"ASD@123"
+                        ,"ASD@123"
+
+                },
+        };//
+    }
     //Test Data used for Recruitment test cases
     @DataProvider(name = "RecruitmentTestData")
     public Object[][] RecruitmentTestData() {
