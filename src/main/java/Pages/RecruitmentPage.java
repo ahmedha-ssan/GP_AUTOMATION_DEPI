@@ -24,38 +24,95 @@ public class RecruitmentPage {
     By middleNameField = By.name("middleName");
     By lastNameField = By.name("lastName");
     By jobVacancyDropdown = By.xpath("//div[contains(text(),'-- Select --')]");
-    By emailField = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/div/div[1]/div/div[2]/input");//
-    By contactNumberField = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/div/div[2]/div/div[2]/input");
+    By emailField = By.xpath("//label[text()='Email']/ancestor::div[contains(@class, 'oxd-input-group')]/div[contains(@class, '')]/input[@placeholder='Type here']");//
+    By contactNumberField = By.xpath("//label[text()='Contact Number']/ancestor::div[contains(@class, 'oxd-input-group')]/div[contains(@class, '')]/input[@placeholder='Type here']");
     By resumeUploadField = By.xpath("//input[@type='file']");
     By keywordsField = By.xpath("//input[@class=\"oxd-input oxd-input--active\" and @placeholder=\"Enter comma seperated words...\"]");
     By noteField = By.xpath("//textarea[@placeholder=\"Type here\"]");
     By checkButton = By.xpath("//label[contains(text(),'Consent to keep data')]");
     By saveButton = By.xpath("//button[@type=\"submit\"]");
+    By vacancyOption = By.xpath("//span[contains(text(),\"Senior Support Specialist\")]");
+    By cancelButton = By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--ghost\"]");
+    By successMSG = By.xpath("//div[@id='oxd-toaster_1']/div/div");
+
+
 
     // Constructor
     public RecruitmentPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(100));
     }
 
     // Navigate to Recruitment module
-    public RecruitmentPage navigateToRecruitment() {
+    public void navigateToRecruitment() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(recruitmentModule)).click();
-        return this;
+        driver.findElement(recruitmentModule).click();
     }
 
     // Navigate to Candidates tab
-    public RecruitmentPage clickOnCandidatesTab() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(candidatesTab)).click();
-        return this;
+    public void clickOnCandidatesTab() {
+        WebElement addButtonElement = driver.findElement(candidatesTab);
+        addButtonElement.click();
     }
 
     // Click Add button
-    public RecruitmentPage clickAddButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(addButton)).click();
-        return this;
+    public void clickAddButton() {
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(addButton)).click();
+        WebElement addButtonElement = driver.findElement(addButton);
+        addButtonElement.click();
+        //driver.findElement(addButton).click();
     }
+    // Method to enter the first name
+    public void enterFirstName(String firstName) {
+        WebElement firstNameFieldElement = driver.findElement(firstNameField);
+        firstNameFieldElement.clear();
+        firstNameFieldElement.sendKeys(firstName);
+    }
+
+    // Method to enter the middle name
+    public void enterMiddleName(String middleName) {
+        WebElement middleNameFieldElement = driver.findElement(middleNameField);
+        middleNameFieldElement.clear();
+        middleNameFieldElement.sendKeys(middleName);
+    }
+
+    // Method to enter the last name
+    public void enterLastName(String lastName) {
+        WebElement lastNameFieldElement = driver.findElement(lastNameField);
+        lastNameFieldElement.clear();
+        lastNameFieldElement.sendKeys(lastName);
+    }
+
+    // Method to enter the email
+    public void enterEmail(String email) {
+        WebElement emailFieldElement = driver.findElement(emailField);
+        emailFieldElement.clear();
+        emailFieldElement.sendKeys(email);
+    }
+    public void enterContactNumber(String contactNumber) {
+        WebElement contactNumberFieldElement = driver.findElement(contactNumberField);
+        contactNumberFieldElement.clear();
+        contactNumberFieldElement.sendKeys(contactNumber);
+    }
+
+    public void enterKeywords(String keywords) {
+        WebElement keywordsFieldElement = driver.findElement(keywordsField);
+        keywordsFieldElement.clear();
+        keywordsFieldElement.sendKeys(keywords);
+
+    }
+    public void enterNote(String note) {
+        WebElement noteFieldElement = driver.findElement(noteField);
+        noteFieldElement.clear();
+        noteFieldElement.sendKeys(note);
+    }
+    public void enterCheckButton() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkButton)).click();
+    }
+    public void enterResumeFile(String resumeUpload) {
+        WebElement resumeUploadFieldElement = driver.findElement(resumeUploadField);
+        resumeUploadFieldElement.sendKeys(resumeUpload);
+    }
+
 
     // select a vacancy from the dropdown list
     public void selectVacancy(){
@@ -64,19 +121,41 @@ public class RecruitmentPage {
         dropDown.click();
 
         // Wait for the dropdown options to become visible
-        By vacancyOption = By.xpath("//span[contains(text(),\"Senior Support Specialist\")]");
         wait.until(ExpectedConditions.visibilityOfElementLocated(vacancyOption));
+
         // Click on the specific vacancy option
         WebElement option = driver.findElement(vacancyOption);
         option.click();
     }
+
     // Method to enter the date of application
     public void enterDateOfApplication(String date) {
         WebElement dateField = driver.findElement(By.xpath("//input[@placeholder='yyyy-dd-mm']"));
         dateField.sendKeys(Keys.CONTROL + "a");
         dateField.sendKeys(Keys.DELETE);
-        dateField.sendKeys(date); // Ensure the format is "yyyy-mm-dd"
+        dateField.sendKeys(date);
     }
+
+
+
+    // Click Save button
+    public void clickSaveButton() {
+        driver.findElement(saveButton).click();
+    }
+
+    // Method to click the Cancel button
+    public void clickCancel() {
+        driver.findElement(cancelButton).click();
+    }
+
+    public String isSuccessMessageDisplayed() {
+        WebElement msg = driver.findElement(successMSG);
+        return msg.getText();
+    }
+
+
+
+
     // use of the robot to upload the resume
     public RecruitmentPage uploadResumeWithRobot(String resumePath) {
         // Find the file upload button and click it to open the file chooser
@@ -109,33 +188,4 @@ public class RecruitmentPage {
         }
         return this;
     }
-
-
-    // Fill Candidate Details
-    public RecruitmentPage enterCandidateDetails(String firstName, String middleName, String lastName,
-                                                 String jobVacancy, String email, String contactNumber,
-                                                 String resumePath, String keywords, String applicationDate, String note) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField)).sendKeys(firstName);
-        driver.findElement(middleNameField).sendKeys(middleName);
-        driver.findElement(lastNameField).sendKeys(lastName);
-        driver.findElement(emailField).sendKeys(email);
-        driver.findElement(contactNumberField).sendKeys(contactNumber);
-        //Can use Robot or path directly that will be the XPATH if we use robot //div[contains(text(),'No file selected')]
-        //uploadResumeWithRobot(resumePath);
-        selectVacancy();
-        driver.findElement(resumeUploadField).sendKeys(resumePath);
-        enterDateOfApplication(applicationDate);
-        driver.findElement(keywordsField).sendKeys(keywords);
-        driver.findElement(noteField).sendKeys(note);
-        driver.findElement(checkButton).click();
-        return this;
-    }
-
-    // Click Save button
-    public RecruitmentPage clickSaveButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(saveButton)).click();
-        return this;
-    }
-
 }

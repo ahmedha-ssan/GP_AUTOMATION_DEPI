@@ -10,7 +10,6 @@ import java.time.Duration;
 public class LoginPage {
     //init my web driver
     WebDriver driver;
-    WebDriverWait wait;
 
     //define my locators
     By userName = By.name("username");
@@ -20,25 +19,22 @@ public class LoginPage {
     //constructor to int the driver
     public LoginPage(WebDriver drive) {
         this.driver = drive;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public LoginPage userNameField(String username) {
+    public void userNameField(String username) {
         WebElement userNameElement = driver.findElement(userName);
         userNameElement.clear();
         userNameElement.sendKeys(username);
-        return this;
     }
 
-    public LoginPage passwordField(String password) {
+    public void passwordField(String password) {
         WebElement passwordElement = driver.findElement(Password);
         passwordElement.clear();
         passwordElement.sendKeys(password);
-        return this;
     }
 
     public void loginButton() {
-        WebElement loginButtonElement = wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+        WebElement loginButtonElement = driver.findElement(loginButton);
         loginButtonElement.click();
     }
 }

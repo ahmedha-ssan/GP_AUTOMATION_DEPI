@@ -1,6 +1,6 @@
-package Base;
+package Tests;
 
-import Pages.RecruitmentPage;
+import Base.baseTest;
 import Pages.claimPage;
 import org.testng.annotations.Test;
 
@@ -32,7 +32,7 @@ public class claimTest extends baseTest {
         ClaimPage.clickSave();
 
         // Submit the expense
-       //ClaimPage.wait(1000000);
+        //ClaimPage.wait(1000000);
         ClaimPage.clickSubmit();
     }
 }

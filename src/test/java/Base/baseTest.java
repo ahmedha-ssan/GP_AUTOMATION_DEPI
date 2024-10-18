@@ -1,14 +1,15 @@
 package Base;
 
-import Data.loginData;
+import Data.TestData;
 import Pages.LoginPage;
+import Pages.RecruitmentPage;
+import Tests.LoginTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
-import org.testng.ITestResult;
 
 import java.time.Duration;
 
@@ -16,6 +17,8 @@ public class baseTest {
     protected WebDriverWait wait;
     protected WebDriver driver;
     protected LoginPage loginPage;
+    protected RecruitmentPage recruitmentPage;
+    LoginTest loginTest;
     By userName = By.name("username");
 
     @BeforeClass
@@ -24,19 +27,12 @@ public class baseTest {
         driver.manage().window().maximize();
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        //wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         loginPage = new LoginPage(driver);
-        String username = loginData.USERNAME;
-        String password = loginData.PASSWORD;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(userName));
-        loginPage.userNameField(username)
-                .passwordField(password)
-                .loginButton();
+        loginPage.userNameField("Admin");
+        loginPage.passwordField("admin123");
+        loginPage.loginButton();
         }
 
-
-//
 //    @AfterMethod
 //    public void screenShot(ITestResult result) {
 //        if (ITestResult.FAILURE == result.getStatus()) {
@@ -49,7 +45,7 @@ public class baseTest {
 //        }
 //    }
 
-
+//
 //    @AfterMethod
 //    public void tearDown(){
 //        driver.quit();

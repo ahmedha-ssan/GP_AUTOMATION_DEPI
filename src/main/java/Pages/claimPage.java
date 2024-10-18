@@ -19,7 +19,7 @@ public class claimPage {
 
     By addExpenseButton = By.xpath("//button[@data-v-6a9dd8d1 and @type=\"button\"]//i[@class=\"oxd-icon bi-plus oxd-button-icon\"]");
     By expenseTypeDropdown = By.xpath("//div[text()= '-- Select --']");
-    By optExpenseDropDown = By.xpath("//div[text()= 'Fuel Allowance']");
+    By optExpenseDropDown = By.xpath("//span[text()= 'Fuel Allowance']");
 
     By dateField = By.xpath("//input[@placeholder=\"yyyy-dd-mm\"]");
     By amountField = By.xpath("//div[contains(@class, 'oxd-input-group') and .//label[text()='Amount']]//input[contains(@class, 'oxd-input--active')]");
@@ -52,7 +52,6 @@ public class claimPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(viewDetailsButton)).click();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
         return this;
     }
 
@@ -70,7 +69,7 @@ public class claimPage {
         dropDown.click();
 
         // Wait for the dropdown options to become visible
-        By expenseTypeOption = By.xpath("//span[text()= 'Fuel Allowance']");
+        By expenseTypeOption = optExpenseDropDown;
         wait.until(ExpectedConditions.visibilityOfElementLocated(expenseTypeOption));
         // Click on the specific vacancy option
         WebElement option = driver.findElement(expenseTypeOption);
@@ -110,7 +109,13 @@ public class claimPage {
         //wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton)).click();
         //wait.until(ExpectedConditions.elementToBeClickable(submitButton)).click();
         //driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(1));
-        driver.findElement(submitButton).click();
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(submitButton)).click();
+        } catch (ElementClickInterceptedException e) {
+            // Retry after waiting for any overlay to disappear
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("oxd-dialog-container-default")));
+            wait.until(ExpectedConditions.elementToBeClickable(submitButton)).click();
+        }
         return this;
     }
 }
