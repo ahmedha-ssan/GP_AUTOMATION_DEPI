@@ -136,8 +136,6 @@ public class RecruitmentPage {
         dateField.sendKeys(date);
     }
 
-
-
     // Click Save button
     public void clickSaveButton() {
         driver.findElement(saveButton).click();

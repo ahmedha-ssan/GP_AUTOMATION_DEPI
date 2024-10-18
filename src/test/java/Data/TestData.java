@@ -30,6 +30,14 @@ public class TestData {
         };
     }
     //Test Data used for Claim test cases
-
-
+    @DataProvider(name = "ClaimTestData")
+    public Object[][] ClaimTestData() {
+        return new Object[][]{
+                {
+                        "2024-10-13"
+                        ,"222"
+                        ,"Transportation expense for meeting"
+                },
+        };
+    }
 }

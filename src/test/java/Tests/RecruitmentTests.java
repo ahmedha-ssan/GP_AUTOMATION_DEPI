@@ -9,9 +9,9 @@ import org.testng.annotations.Test;
 public class RecruitmentTests extends baseTest {
 
     @Test(description = "Verify adding a new candidate with valid data", dataProvider = "RecruitmentTestData", dataProviderClass = TestData.class)
-    public void addCandidate_TC1(String firstName, String middleName, String lastName, String email, String contactNumber, String resumeFilePath, String keywords, String applicationDate, String note) throws InterruptedException {
+    public void addCandidate_TC1(String firstName, String middleName, String lastName, String email, String contactNumber, String resumeFilePath, String keywords, String applicationDate, String note){
         recruitmentPage = new RecruitmentPage(driver);
-        
+
         recruitmentPage.navigateToRecruitment();
         recruitmentPage.clickOnCandidatesTab();
         recruitmentPage.clickAddButton();
@@ -29,8 +29,8 @@ public class RecruitmentTests extends baseTest {
         recruitmentPage.clickSaveButton();
 
         // Assert the existence of the success message after adding a new candidate
-//        String actualMSG = recruitmentPage.isSuccessMessageDisplayed();
-//        String expectedMSG = "Success\nSuccessfully Saved";
-//        Assert.assertEquals(actualMSG, expectedMSG, "Error message while adding a new candidate");
+        String actualMSG = recruitmentPage.isSuccessMessageDisplayed();
+        String expectedMSG = "Success\nSuccessfully Saved";
+        Assert.assertEquals(actualMSG, expectedMSG, "Error message while adding a new candidate");
     }
 }

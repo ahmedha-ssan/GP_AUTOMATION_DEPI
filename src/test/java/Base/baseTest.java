@@ -1,6 +1,7 @@
 package Base;
 
 import Data.TestData;
+import Pages.ClaimPage;
 import Pages.LoginPage;
 import Pages.RecruitmentPage;
 import Tests.LoginTest;
@@ -18,10 +19,12 @@ public class baseTest {
     protected WebDriver driver;
     protected LoginPage loginPage;
     protected RecruitmentPage recruitmentPage;
-    LoginTest loginTest;
+    protected LoginTest loginTest;
+    protected ClaimPage claimPage;
+
     By userName = By.name("username");
 
-    @BeforeClass
+    @BeforeTest
     public void setUp(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
