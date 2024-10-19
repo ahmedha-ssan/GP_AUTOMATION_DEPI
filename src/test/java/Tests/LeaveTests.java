@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class LeaveTests extends baseTest {
 
     @Test(description = "Verify submitting a leave request without selecting a leave type and dates")
-    public void submitLeaveRequestWithoutRequiredFields_TC1() throws InterruptedException {
+    public void submitLeaveRequestWithoutRequiredFields_TC1(){
         LeavePage leavePage = new LeavePage(driver);
 
         leavePage.navigateToLeaveModule();
@@ -34,7 +34,7 @@ public class LeaveTests extends baseTest {
     }
 
     @Test(description = "Verify submitting a leave request with valid data", dataProvider = "LeaveTestData", dataProviderClass = TestData.class)
-    public void submitLeaveRequest_TC2(String leaveType, String fromDate, String toDate, String partialDays, String comments) throws InterruptedException {
+    public void submitLeaveRequest_TC2(String leaveType, String fromDate, String toDate, String partialDays, String comments){
         LeavePage leavePage = new LeavePage(driver);
 
         leavePage.navigateToLeaveModule();

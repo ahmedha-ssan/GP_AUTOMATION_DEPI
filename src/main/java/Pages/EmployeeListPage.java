@@ -23,6 +23,7 @@ public class EmployeeListPage {
     By Lastname=By.xpath("//input[@name=\"lastName\"]");
     By SaveButton=By.xpath("(//button[@type=\"submit\"])[1]");
     By successMSG = By.xpath("//div[@id='oxd-toaster_1']/div/div");
+
     // Constructor to initialize WebDriver
     public EmployeeListPage(WebDriver driver) {
         this.driver = driver;

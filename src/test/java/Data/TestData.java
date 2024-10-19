@@ -76,4 +76,14 @@ public class TestData {
                 {"CAN - FMLA", "2024-11-01", "2024-11-10", "Start Day Only", "Vacation with family"},
         };
     }
+
+
+    @DataProvider(name = "PerformanceTestData")
+    public Object[][] PerformanceTestData() {
+        return new Object[][]{
+                {
+                        "Pet"  // partial employee name
+                },
+        };
+    }
 }

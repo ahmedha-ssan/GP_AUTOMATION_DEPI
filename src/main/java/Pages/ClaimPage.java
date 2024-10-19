@@ -55,6 +55,7 @@ public class ClaimPage {
         WebElement addExpenseButtonElement = driver.findElement(addExpenseButton);
         addExpenseButtonElement.click();
     }
+
     // add a note
     public void addNote(String note) {
         if (note != null && !note.isEmpty()) {
@@ -80,7 +81,7 @@ public class ClaimPage {
         WebElement dateFieldElement = driver.findElement(dateField);
         dateFieldElement.sendKeys(Keys.CONTROL + "a");
         dateFieldElement.sendKeys(Keys.DELETE);
-        dateFieldElement.sendKeys(date); // Ensure the format is "yyyy-mm-dd"
+        dateFieldElement.sendKeys(date); // The format is "yyyy-mm-dd"
     }
 
     // Click Save button

@@ -22,9 +22,10 @@ public class baseTest {
     protected AdminPage adminPage;
     protected DashboardPage dashboardPage;
     protected EmployeeListPage employeeListPage;
+    protected NavigationBarPage navigationBarPage;
     By userName = By.name("username");
 
-    @BeforeTest
+    @BeforeClass
     public void setUp(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
