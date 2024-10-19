@@ -53,4 +53,21 @@ public class TestData {
                 },
         };
     }
+    @DataProvider(name = "EditEmployeeData")
+    public Object[][] EditEmployeeData() {
+        return new Object[][]{
+                {
+                        "0364","Nancy","Yousery"
+                },
+        };
+    }
+
+    @DataProvider(name = "ResetPasswordData")
+    public Object[][] ResetPasswordData() {
+        return new Object[][]{
+                {
+                        "Admin"
+                },
+        };
+    }
 }

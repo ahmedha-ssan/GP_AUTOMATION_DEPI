@@ -21,6 +21,7 @@ public class baseTest {
     protected ClaimPage claimPage;
     protected AdminPage adminPage;
     protected DashboardPage dashboardPage;
+    protected EmployeeListPage employeeListPage;
     By userName = By.name("username");
 
     @BeforeTest
