@@ -20,8 +20,5 @@ public class PerformanceTests extends baseTest {
         performancePage.selectEmployeeSuggestion();
 
        performancePage.clickSearchButton();
-
-
-
     }
 }

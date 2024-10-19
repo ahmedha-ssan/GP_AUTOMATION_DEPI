@@ -13,7 +13,7 @@ public class ClaimPage {
     //Define my locators
     By claimModule = By.xpath("//span[text()='Claim']");
     By myClaimTap = By.xpath("//a[text()='My Claims']");
-    By viewDetailsButton = By.xpath("(//button[normalize-space()='View Details'])[2]\n");
+    By viewDetailsButton = By.xpath("(//button[normalize-space()='View Details'])[3]\n");
     //  //button[@class="oxd-button oxd-button--medium oxd-button--text oxd-table-cell-action-space"]
     By addExpenseButton = By.xpath("//button[@data-v-6a9dd8d1 and @type=\"button\"]//i[@class=\"oxd-icon bi-plus oxd-button-icon\"]");
     By expenseTypeDropdown = By.xpath("//div[text()= '-- Select --']");

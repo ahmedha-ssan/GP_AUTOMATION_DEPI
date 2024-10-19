@@ -18,6 +18,10 @@ public class EmployeeEditTest extends baseTest {
         employeeListPage.usernamefeild(Username);
         employeeListPage.lastnamefeild(lastname);
         employeeListPage.SaveButtonn();
+
+    }
+    @Test(description = "Assert that success message is displayed",dependsOnMethods = {"testEditEmployeeDetails"})
+    public void AssertSuccessMessageDisplayed() {
         String actualMSG = employeeListPage.isSuccessMessageDisplayed();
         String expectedMSG = "Success\nSuccessfully Updated";
         Assert.assertEquals(actualMSG, expectedMSG, "Error message while Editing");

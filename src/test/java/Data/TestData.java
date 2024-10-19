@@ -86,4 +86,12 @@ public class TestData {
                 },
         };
     }
+    @DataProvider(name = "SideBarTestData")
+    public Object[][] SideBarTestData() {
+        return new Object[][]{
+                {
+                        "PIM"  // partial employee name
+                },
+        };
+    }
 }

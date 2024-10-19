@@ -22,10 +22,13 @@ public class ClaimTest extends baseTest {
         claimPage.addNote(note);
         claimPage.clickSave();
         claimPage.clickSubmit();
+    }
 
+    @Test(description = "Assert that success message is displayed",dependsOnMethods = {"addExpenseClaimTest"})
+    public void AssertSuccessMessageDisplayed() {
         // Assert the existence of the success message after adding a new candidate
         String actualMSG = claimPage.isSuccessMessageDisplayed();
         String expectedMSG = "Success\nSuccessfully Saved";
-        Assert.assertEquals(actualMSG, expectedMSG, "Error message while adding a new candidate");
+        Assert.assertEquals(actualMSG, expectedMSG, "Error message while adding a new expense");
     }
 }

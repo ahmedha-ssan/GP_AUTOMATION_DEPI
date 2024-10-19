@@ -34,7 +34,7 @@ public class RecruitmentPage {
     By vacancyOption = By.xpath("//span[contains(text(),\"Senior Support Specialist\")]");
     By cancelButton = By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--ghost\"]");
     By successMSG = By.xpath("//div[@id='oxd-toaster_1']/div/div");
-
+    By AssertPageTitle = By.xpath("//h6[text()='Recruitment']");
 
 
     // Constructor
@@ -47,7 +47,11 @@ public class RecruitmentPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(100));
         driver.findElement(recruitmentModule).click();
     }
-
+    public String getPageTitle(){
+        WebElement AssertPageTitleElement = driver.findElement(AssertPageTitle);
+        System.out.println(AssertPageTitleElement.getText());
+        return AssertPageTitleElement.getText();
+    }
     // Navigate to Candidates tab
     public void clickOnCandidatesTab() {
         WebElement addButtonElement = driver.findElement(candidatesTab);

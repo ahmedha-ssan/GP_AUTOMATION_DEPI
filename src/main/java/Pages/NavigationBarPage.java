@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.Set;
+
 public class NavigationBarPage {
     WebDriver driver;
 
@@ -58,7 +61,22 @@ public class NavigationBarPage {
         return msg.getText();
     }
     ////////////////////////////////////////////////////////////////////////////////////////
-    //click on logout
 
-
+    //click on Upgrade button
+    public void clickUpgradeButton() {
+        // Wait for the Upgrade button to be clickable and then click it
+        WebElement upgradeButtonElement = driver.findElement(upgradeButton);
+        upgradeButtonElement.click();
+    }
+    //After clicking the button, switch the driver's context to the newly opened tab.
+    public void switchToNewTab() {
+        // Get all window handles
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        // Switch to the new tab
+        driver.switchTo().window(tabs.get(1));
+    }
+    // Return the current URL
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
 }
