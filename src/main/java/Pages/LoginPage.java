@@ -10,11 +10,17 @@ import java.time.Duration;
 public class LoginPage {
     //init my web driver
     WebDriver driver;
+    WebDriverWait wait;
 
     //define my locators
     By userName = By.name("username");
     By Password = By.name("password");
     By loginButton = By.xpath("//button[@type='submit']");
+    By userDropdown = By.xpath("//p[@class=\"oxd-userdropdown-name\"]");
+    By logoutButton = By.xpath("//a[contains(text(),\"Logout\")]");
+    By forgotPasswordLink = By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[4]/p");
+    By resetPasswordButton = By.xpath("//button[@type=\"submit\"]");
+    By usernameforget=By.xpath("//input[@name=\"username\"]");
 
     //constructor to int the driver
     public LoginPage(WebDriver drive) {
@@ -36,5 +42,28 @@ public class LoginPage {
     public void loginButton() {
         WebElement loginButtonElement = driver.findElement(loginButton);
         loginButtonElement.click();
+    }
+    public void clickDropdown() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        WebElement userDropdownElement = driver.findElement(userDropdown);
+        userDropdownElement.click();
+    }
+    public void logout() {
+        WebElement logoutButtonElement = driver.findElement(logoutButton);
+        logoutButtonElement.click();
+    }
+    public void clickForgotPassword() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        WebElement forgotPasswordElement = driver.findElement(forgotPasswordLink);
+        forgotPasswordElement.click();
+    }
+    public void usernameforgetfield(String username) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        WebElement usernameforgetElement = driver.findElement(usernameforget);
+        usernameforgetElement.sendKeys(username);
+    }
+    public void resetPassword() {
+        WebElement resetButtonElement = driver.findElement(resetPasswordButton);  // Using the updated XPath for the button
+        resetButtonElement.click();
     }
 }

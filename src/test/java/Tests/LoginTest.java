@@ -1,20 +1,24 @@
 package Tests;
 import Base.baseTest;
 import Data.TestData;
-import Pages.AdminPage;
-import Pages.RecruitmentPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 
 public class LoginTest extends baseTest {
-
-    @Test(description = "login with valid test data",dataProvider = "LoginTestData", dataProviderClass = TestData.class)
-    public void Login_TC1(String username, String password){
-        loginPage.userNameField(username);
-        loginPage.passwordField(password);
-        loginPage.loginButton();
+    @Test
+    public void testLogout() {
+        // Perform logout
+        loginPage.clickDropdown();
+        loginPage.logout();
+    }
+    @Test (dependsOnMethods = {"testLogout"},dataProvider = "ResetPasswordData", dataProviderClass = TestData.class)
+    public void ForgotPassword_TC2(String username) {
+        loginPage.clickForgotPassword();
+        loginPage.usernameforgetfield(username);
+        loginPage.resetPassword();
+        String expectedUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset";
+        String actualUrl = driver.getCurrentUrl();
+        assert actualUrl.contains(expectedUrl) : "Logout failed";
     }
 }
 
