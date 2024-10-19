@@ -70,4 +70,10 @@ public class TestData {
                 },
         };
     }
+    @DataProvider(name = "LeaveTestData")
+    public Object[][] getLeaveTestData() {
+        return new Object[][]{
+                {"CAN - FMLA", "2024-11-01", "2024-11-10", "Start Day Only", "Vacation with family"},
+        };
+    }
 }
