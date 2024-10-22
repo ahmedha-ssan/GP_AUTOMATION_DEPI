@@ -24,7 +24,7 @@ public class NavigationBarTest extends baseTest {
 
     @Test(description = "Verify Functionality of Support Button")
     public void SupportButtonTest() {
-
+        navigationBarPage.clickCloseAboutButton();
         navigationBarPage.clickDropDownButton();
         navigationBarPage.clickSupportButton();
     }

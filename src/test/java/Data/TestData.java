@@ -14,18 +14,18 @@ public class TestData {
         };
     }
 
-    @DataProvider(name = "adminTestData")
-    public Object[][] adminTestData() {
-        return new Object[][]{
-                {
-                        "hanan hendawy"
-                        ,"hanan"
-                        ,"ASD@123"
-                        ,"ASD@123"
-
-                },
-        };//
-    }
+//    @DataProvider(name = "adminTestData")
+//    public Object[][] adminTestData() {
+//        return new Object[][]{
+//                {
+//                        "hanan hendawy"
+//                        ,"hanan"
+//                        ,"ASD@123"
+//                        ,"ASD@123"
+//
+//                },
+//        };//
+//    }
     //Test Data used for Recruitment test cases
     @DataProvider(name = "RecruitmentTestData")
     public Object[][] RecruitmentTestData() {
@@ -77,15 +77,15 @@ public class TestData {
         };
     }
 
-
     @DataProvider(name = "PerformanceTestData")
     public Object[][] PerformanceTestData() {
         return new Object[][]{
                 {
-                        "Pet"  // partial employee name
+                        "a"  // partial employee name
                 },
         };
     }
+
     @DataProvider(name = "SideBarTestData")
     public Object[][] SideBarTestData() {
         return new Object[][]{
@@ -94,4 +94,41 @@ public class TestData {
                 },
         };
     }
+
+    @DataProvider(name = "jobtitleData")
+    public Object[][] adminTestData() {
+        return new Object[][]{
+                {
+                        "AAAAA Software Tester"
+                        ,"Manual Testing and Automation testing"
+                        ,"C:\\depi\\automation_project\\JobSpecification.pdf"
+                        ,"My task is done"
+
+                },
+        };
+    }
+
+
+    @DataProvider(name = "searchData")
+    public Object[][] adminsearchData() {
+        return new Object[][]{
+                {
+                        "Admin"
+                        ,""
+
+
+                },
+        };
+    }
+
+    @DataProvider(name = "addpost")
+    public Object[][] addpost() {
+        return new Object[][]{
+                {
+                        "helllooooooo"
+
+                },
+        };
+    }
+
 }

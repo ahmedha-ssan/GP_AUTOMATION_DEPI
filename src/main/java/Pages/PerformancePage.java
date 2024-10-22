@@ -7,12 +7,11 @@ import org.openqa.selenium.WebElement;
 public class PerformancePage {
     WebDriver driver;
 
-    // Locators
+
     By performanceModule = By.xpath("//span[text()='Performance']");
     By employeeNameInputXPath = By.xpath("//input[@placeholder='Type for hints...']");
     By searchButton = By.xpath("//button[@type='submit' and contains(@class, 'oxd-button--secondary')]\n");
-    By reviewFoundMessage = By.xpath("//div[contains(text(), 'Review found')]");
-    By employeeSuggestion = By.xpath("//div[@role='option' and contains(@class, 'oxd-autocomplete-option')]//span[contains(text(), 'Peter Mac Anderson')]");
+    By employeeSuggestion = By.xpath("//div[@role='option' and contains(@class, 'oxd-autocomplete-option')]//span[contains(text(), 'JonathanChristopher  AndersonSmith')]");
 
 
     public PerformancePage(WebDriver driver) {

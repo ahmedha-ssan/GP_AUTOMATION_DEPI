@@ -3,34 +3,49 @@ package Tests;
 import Base.baseTest;
 import Data.TestData;
 import Pages.AdminPage;
-import Pages.RecruitmentPage;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AdminTest extends baseTest {
 
-    @Test(description = "Verify adding a new user with valid data", dataProvider = "adminTestData", dataProviderClass = TestData.class)
-    public void adduser_TC1(String Employee_Name, String Username, String Password, String confirmPassword){
+
+
+    @Test(description = "Verify search for user", dataProvider = "searchData", dataProviderClass = TestData.class)
+    public void searchUser_TC1( String username, String empname) throws InterruptedException {
         adminPage = new AdminPage(driver);
         adminPage.navigateToAdmin();
-        adminPage.clickOnUsersTab();
-//        adminpage.clickAddButton();
-//        recruitmentPage.enterFirstName(firstName);
-//        recruitmentPage.enterMiddleName(middleName);
-//        recruitmentPage.enterLastName(lastName);
-//        recruitmentPage.selectVacancy();
-//        recruitmentPage.enterEmail(email);
-//        recruitmentPage.enterContactNumber(contactNumber);
-//        // recruitmentPage.enterResumeFile(resumeFilePath);
-//        recruitmentPage.enterKeywords(keywords);
-//        recruitmentPage.enterDateOfApplication(applicationDate);
-//        recruitmentPage.enterNote(note);
-//        recruitmentPage.enterCheckButton();
-//        recruitmentPage.clickSaveButton();
+        adminPage.setUsers_option();
+        adminPage.addusername(username);
+        adminPage.selectrole();
+        adminPage.addemployename(empname);
+        adminPage.selectstatus();
+        adminPage.clickSearchButton();
 
-        // Assert the existence of the success message after adding a new candidate
-//        String actualMSG = recruitmentPage.isSuccessMessageDisplayed();
-//        String expectedMSG = "Success\nSuccessfully Saved";
-//        Assert.assertEquals(actualMSG, expectedMSG, "Error message while adding a new candidate");
+    }
+    @Test(description = "Verify adding a new job title", dataProvider = "jobtitleData", dataProviderClass = TestData.class,dependsOnMethods = "searchUser_TC1")
+    public void addjobtitle_TC2(String JobTitle, String JobDescription, String resumeFilePath, String note) throws InterruptedException {
+        adminPage = new AdminPage(driver);
+        adminPage.navigateToAdmin();
+        adminPage.setJobtitles_option();
+        adminPage.clickAddButton();
+        adminPage.addJobTitle(JobTitle);
+        adminPage.addJobdescription(JobDescription);
+        adminPage.enterResumeFile(resumeFilePath);
+        adminPage.enterNote(note);
+        adminPage.clickSaveButton();
+
+
+}
+
+
+    @Test(description = "assertion ",dependsOnMethods = "addjobtitle_TC2")
+    public void assertion() throws InterruptedException {
+
+        String actualMSG = adminPage.isSuccessMessageDisplayed();
+        String expectedMSG = "Success\nSuccessfully Saved";
+        Assert.assertEquals(actualMSG, expectedMSG, "Error message while adding a new job title");
+
     }
 
 

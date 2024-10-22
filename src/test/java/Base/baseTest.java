@@ -56,10 +56,11 @@ public class baseTest {
         }
     }
 
-//
-//    @AfterMethod
-//    public void tearDown(){
-//        driver.quit();
-//    }
-}
 
+    @AfterMethod
+    public void tearDown(){
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}

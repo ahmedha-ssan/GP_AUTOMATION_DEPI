@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test name="Automation Tests" verbose="2" preserve-order="true">
+        <classes>
+            <!-- Admin Tests -->
+            <class name="Tests.AdminTest">
+                <methods>
+                    <include name="adduser_TC1"/>
+                </methods>
+            </class>
 
-<suite name="Test Suite">
-<test name="Login and Recruitment Tests">
-    <classes>
-<!--        <class name="Login.LoginTests"/>-->
-<!--        <class name="Recruitment.RecruitmentTests"/>-->
-    </classes>
-</test>
+            <!-- Claim Tests -->
+            <class name="Tests.ClaimTest">
+                <methods>
+                    <include name="addExpenseClaimTest"/>
+                </methods>
+            </class>
+
+            <!-- Dashboard Tests -->
+            <class name="Tests.DashboardTests">
+                <methods>
+                    <include name="testDashboardHeaderDisplayed"/>
+                    <include name="testWidgetInteractivity"/>
+                    <include name="testIsWidgetExpanded"/>
+                    <include name="testTimeAtWorkWidgetDisplayed"/>
+                    <include name="testMyActionsWidgetDisplayed"/>
+                    <include name="testQuickLaunchWidgetDisplayed"/>
+                    <include name="testBuzzLatestPostsWidgetDisplayed"/>
+                    <include name="testEmployeesOnLeaveTodayWidgetDisplayed"/>
+                    <include name="testEmployeeDistributionBySubUnitWidgetDisplayed"/>
+                    <include name="testEmployeeDistributionByLocationWidgetDisplayed"/>
+                </methods>
+            </class>
+
+            <!-- Employee Edit Tests -->
+            <class name="Tests.EmployeeEditTest">
+                <methods>
+                    <include name="testEditEmployeeDetails"/>
+                </methods>
+            </class>
+
+            <!-- Leave Tests -->
+            <class name="Tests.LeaveTests">
+                <methods>
+                    <include name="submitLeaveRequestWithoutRequiredFields_TC1"/>
+                    <include name="submitLeaveRequest_TC2"/>
+                </methods>
+            </class>
+
+            <!-- Login Tests -->
+            <class name="Tests.LoginTest">
+                <methods>
+                    <include name="testLogout"/>
+                </methods>
+            </class>
+
+            <!-- Navigation Bar Tests -->
+            <class name="Tests.NavigationBarTest">
+                <methods>
+                    <include name="AboutButtonTest"/>
+                    <include name="SupportButtonTest"/>
+                    <include name="testUpgradeButtonOpensNewTab"/>
+                </methods>
+            </class>
+
+            <!-- Performance Tests -->
+            <class name="Tests.PerformanceTests">
+                <methods>
+                    <include name="searchPerformanceReview_TC1"/>
+                </methods>
+            </class>
+
+            <!-- Recruitment Tests -->
+            <class name="Tests.RecruitmentTests">
+                <methods>
+                    <include name="AssertNavigateToRecruitmentModule"/>
+                    <include name="addCandidateTestCase"/>
+                </methods>
+            </class>
+
+            <!-- Sidebar Tests -->
+            <class name="Tests.SideBarTests">
+                <methods>
+                    <include name="testSidebarSearch"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
-
-
