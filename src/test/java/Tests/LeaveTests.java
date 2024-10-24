@@ -3,14 +3,15 @@ package Tests;
 import Base.baseTest;
 import Pages.LeavePage;
 import Data.TestData;
+import io.qameta.allure.Owner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
 public class LeaveTests extends baseTest {
-
+    @Owner("Rana")
     @Test(description = "Verify submitting a leave request without selecting a leave type and dates")
-    public void submitLeaveRequestWithoutRequiredFields_TC1(){
+    public void submitLeaveRequestWithoutRequiredFields(){
         LeavePage leavePage = new LeavePage(driver);
 
         leavePage.navigateToLeaveModule();
@@ -32,9 +33,9 @@ public class LeaveTests extends baseTest {
         // Assert that the correct error message is displayed
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message not displayed as expected when required fields are missing.");
     }
-
+    @Owner("Rana")
     @Test(description = "Verify submitting a leave request with valid data", dataProvider = "LeaveTestData", dataProviderClass = TestData.class)
-    public void submitLeaveRequest_TC2(String leaveType, String fromDate, String toDate, String partialDays, String comments){
+    public void submitLeaveRequest(String leaveType, String fromDate, String toDate, String partialDays, String comments){
         LeavePage leavePage = new LeavePage(driver);
 
         leavePage.navigateToLeaveModule();

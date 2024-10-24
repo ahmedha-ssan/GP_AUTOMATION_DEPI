@@ -12,19 +12,18 @@ public class AdminPage {
     WebDriverWait wait;
 
     //define my locators
-    By userManagment = By.xpath("    //ul//li[@class=\"oxd-topbar-body-nav-tab --parent --visited\"]\n ");
+    By userManagement = By.xpath("    //ul//li[@class=\"oxd-topbar-body-nav-tab --parent --visited\"]\n ");
     By users_option = By.xpath("//a[@class=\"oxd-topbar-body-nav-tab-link\" and contains(text(),Users)]\n ");
     By username_field = By.xpath("//div[@class=\"oxd-input-group oxd-input-field-bottom-space\"]//div[@class='']//input[@class=\"oxd-input oxd-input--active\"] ");
-    By userrole_dropdown = By.xpath("  (//div[@class='oxd-select-wrapper']//div[@class=\"oxd-select-text--after\"]//i[@class=\"oxd-icon bi-caret-down-fill oxd-select-text--arrow\"])[1]  ");
-    By userrole_option = By.xpath(" (//div[@role=\"option\" and @class=\"oxd-select-option\"])[2] ");
-    By employename_field = By.xpath("//input[@placeholder=\"Type for hints...\"] ");
+    By userRole_dropdown = By.xpath("  (//div[@class='oxd-select-wrapper']//div[@class=\"oxd-select-text--after\"]//i[@class=\"oxd-icon bi-caret-down-fill oxd-select-text--arrow\"])[1]  ");
+    By userRole_option = By.xpath(" (//div[@role=\"option\" and @class=\"oxd-select-option\"])[2] ");
+    By employeeName_field = By.xpath("//input[@placeholder=\"Type for hints...\"] ");
     By status_dropdown = By.xpath(" (//div[@class='oxd-select-wrapper']//div[@class=\"oxd-select-text--after\"]//i[@class=\"oxd-icon bi-caret-down-fill oxd-select-text--arrow\"])[2] ");
     By status_option = By.xpath(" (//div[@role=\"option\" and @class=\"oxd-select-option\"])[2] ");
     By searchButton = By.cssSelector("  button[type='submit']\n");
-
     By adminModule = By.xpath("//span[text()='Admin']");
     By job_Tab = By.xpath("//span[@class='oxd-topbar-body-nav-tab-item' and contains(text(),'Job ')]");
-    By Jobtitles_option = By.xpath("//a[@class=\"oxd-topbar-body-nav-tab-link\" and contains(text(),'Job Titles')] ");
+    By JobTitles_option = By.xpath("//a[@class=\"oxd-topbar-body-nav-tab-link\" and contains(text(),'Job Titles')] ");
     By addButton = By.xpath(" //button[@class=\"oxd-button oxd-button--medium oxd-button--secondary\"]");
     By JobTitle_field = By.xpath("//div[@class='oxd-input-group oxd-input-field-bottom-space']//div[@class='']//input[@class=\"oxd-input oxd-input--active\"]");
     By JobDescription_field = By.xpath("//div[@class=\"oxd-input-group oxd-input-field-bottom-space\"]//div[@class='']//textarea[@class=\"oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical\" and @placeholder=\"Type description here\" ]");
@@ -41,43 +40,41 @@ public class AdminPage {
     }
 
     public void navigateToAdmin() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
         driver.findElement(adminModule).click();
     }
 
     public void setUsers_option() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-        WebElement usermanagmenttab_Element = driver.findElement(userManagment);
-        usermanagmenttab_Element.click();
-        WebElement userschoice_Element = driver.findElement(users_option);
-        userschoice_Element.click();
-
+        WebElement userManagementTab_Element = driver.findElement(userManagement);
+        userManagementTab_Element.click();
+        WebElement usersChoice_Element = driver.findElement(users_option);
+        usersChoice_Element.click();
     }
 
-    public void addusername(String username) {
+    public void addUserName(String username) {
         WebElement emailFieldElement = driver.findElement(username_field);
         emailFieldElement.clear();
         emailFieldElement.sendKeys(username);
     }
-    public void addemployename(String empname) {
-        WebElement emailFieldElement = driver.findElement(employename_field);
+    public void addEmployeeName(String empName) {
+        WebElement emailFieldElement = driver.findElement(employeeName_field);
         emailFieldElement.clear();
-        emailFieldElement.sendKeys(empname);
+        emailFieldElement.sendKeys(empName);
     }
 
-    public void selectrole(){
+    public void selectRole(){
         // Click the dropdown to open the options
-        WebElement dropDown = driver.findElement(userrole_dropdown);
+        WebElement dropDown = driver.findElement(userRole_dropdown);
         dropDown.click();
         // Wait for the dropdown options to become visible
-        wait.until(ExpectedConditions.visibilityOfElementLocated(userrole_option));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(userRole_option));
         // Click on the specific user role option
-        WebElement option = driver.findElement(userrole_option);
+        WebElement option = driver.findElement(userRole_option);
         option.click();
     }
 
 
-    public void selectstatus(){
+    public void selectStatus(){
         // Click the dropdown to open the options
         WebElement dropDown = driver.findElement(status_dropdown);
         dropDown.click();
@@ -95,12 +92,12 @@ public class AdminPage {
     //////////////////////////////
 
 
-    public void setJobtitles_option() {
+    public void setJobTitles_option() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-        WebElement usermanagmenttab_Element = driver.findElement(job_Tab);
-        usermanagmenttab_Element.click();
-        WebElement userschoice_Element = driver.findElement(Jobtitles_option);
-        userschoice_Element.click();
+        WebElement userManagementTab_Element = driver.findElement(job_Tab);
+        userManagementTab_Element.click();
+        WebElement usersChoice_Element = driver.findElement(JobTitles_option);
+        usersChoice_Element.click();
 
     }
 
@@ -115,7 +112,7 @@ public class AdminPage {
         emailFieldElement.sendKeys(title);
     }
 
-    public void addJobdescription(String title) {
+    public void addJobDescription(String title) {
         WebElement emailFieldElement = driver.findElement(JobDescription_field);
         emailFieldElement.clear();
         emailFieldElement.sendKeys(title);

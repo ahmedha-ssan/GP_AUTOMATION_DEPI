@@ -14,7 +14,6 @@ import org.testng.annotations.*;
 import java.time.Duration;
 
 public class baseTest {
-    protected WebDriverWait wait;
     protected WebDriver driver;
     protected LoginPage loginPage;
     protected RecruitmentPage recruitmentPage;
@@ -27,18 +26,20 @@ public class baseTest {
     protected SideBarPage sideBarPage;
     protected BuzzPage buzzpage;
     protected MyInfoPage myInfoPage;
-
     @BeforeClass
     public void setUp(){
         driver = new ChromeDriver();
+
         driver.manage().window().maximize();
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
         loginPage = new LoginPage(driver);
         loginPage.userNameField("Admin");
         loginPage.passwordField("admin123");
         loginPage.loginButton();
+
         dashboardPage = new DashboardPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
 
@@ -56,11 +57,11 @@ public class baseTest {
         }
     }
 
-//
-//    @AfterMethod
-//    public void tearDown(){
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
+
+    @AfterClass
+    public void tearDown(){
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }

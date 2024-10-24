@@ -11,7 +11,6 @@ public class PerformancePage {
     By performanceModule = By.xpath("//span[text()='Performance']");
     By employeeNameInputXPath = By.xpath("//input[@placeholder='Type for hints...']");
     By searchButton = By.xpath("//button[@type='submit' and contains(@class, 'oxd-button--secondary')]\n");
-    //By employeeSuggestion = By.xpath("//div[@role='option' and contains(@class, 'oxd-autocomplete-option')]//span[contains(text(), 'JonathanChristopher  AndersonSmith')]");
     By employeeSuggestion = By.xpath("//div[@role='option' and contains(@class, 'oxd-autocomplete-option')]//span[contains(text(), 'Peter Mac Anderson')]");
 
 

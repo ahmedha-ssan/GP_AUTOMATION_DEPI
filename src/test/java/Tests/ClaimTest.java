@@ -8,10 +8,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ClaimTest extends baseTest {
+    String expectedMSG = "Success\nSuccessfully Saved";
+    String errMSG ="Error message while adding a new expense";
 
     @Owner("Ahmed")
     @Test(description = "Verify adding a new expense claim with valid data",dataProvider = "ClaimTestData", dataProviderClass = TestData.class)
-    public void addExpenseClaimTest(String date,String amount,String note) throws InterruptedException {
+    public void addExpenseClaimTest(String date,String amount,String note){
         claimPage = new ClaimPage(driver);
 
         claimPage.navigateToClaims();
@@ -25,12 +27,12 @@ public class ClaimTest extends baseTest {
         claimPage.clickSave();
         claimPage.clickSubmit();
     }
+
     @Owner("Ahmed")
     @Test(description = "Assert that success message is displayed",dependsOnMethods = {"addExpenseClaimTest"})
     public void AssertSuccessMessageDisplayed() {
-        // Assert the existence of the success message after adding a new candidate
+        // Assert the existence of the success message after adding a new Expense
         String actualMSG = claimPage.isSuccessMessageDisplayed();
-        String expectedMSG = "Success\nSuccessfully Saved";
-        Assert.assertEquals(actualMSG, expectedMSG, "Error message while adding a new expense");
+        Assert.assertEquals(actualMSG, expectedMSG,errMSG);
     }
 }

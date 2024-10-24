@@ -14,18 +14,7 @@ public class TestData {
         };
     }
 
-//    @DataProvider(name = "adminTestData")
-//    public Object[][] adminTestData() {
-//        return new Object[][]{
-//                {
-//                        "hanan hendawy"
-//                        ,"hanan"
-//                        ,"ASD@123"
-//                        ,"ASD@123"
-//
-//                },
-//        };//
-//    }
+
     //Test Data used for Recruitment test cases
     @DataProvider(name = "RecruitmentTestData")
     public Object[][] RecruitmentTestData() {
@@ -42,6 +31,25 @@ public class TestData {
                 },
         };
     }
+    //Test Data used for My info test cases
+    @DataProvider(name = "MyInfoTestData")
+    public Object[][] MyInfoTestData() {
+        return new Object[][]{
+                {
+                        "C:\\Users\\ammod\\Downloads\\YAT235.pdf"
+                },
+        };
+    }
+    //Test Data used for edit info test cases
+    @DataProvider(name = "EditInfoTestData")
+    public Object[][] EditInfoTestData() {
+        return new Object[][]{
+                {
+                        "2024-10-13"
+                },
+        };
+    }
+
     //Test Data used for Claim test cases
     @DataProvider(name = "ClaimTestData")
     public Object[][] ClaimTestData() {
@@ -81,7 +89,8 @@ public class TestData {
     public Object[][] PerformanceTestData() {
         return new Object[][]{
                 {
-                        "a"  // partial employee name
+                        "a",
+                        "admin123"
                 },
         };
     }
@@ -95,13 +104,13 @@ public class TestData {
         };
     }
 
-    @DataProvider(name = "jobtitleData")
-    public Object[][] adminTestData() {
+    @DataProvider(name = "jobTitleData")
+    public Object[][] jobTitleData() {
         return new Object[][]{
                 {
                         "AAAAA Software Tester"
                         ,"Manual Testing and Automation testing"
-                        ,"C:\\depi\\automation_project\\JobSpecification.pdf"
+                        ,"C:\\Users\\ammod\\Downloads\\YAT235.pdf"
                         ,"My task is done"
 
                 },
@@ -110,7 +119,7 @@ public class TestData {
 
 
     @DataProvider(name = "searchData")
-    public Object[][] adminsearchData() {
+    public Object[][] adminSearchData() {
         return new Object[][]{
                 {
                         "Admin"
@@ -121,8 +130,8 @@ public class TestData {
         };
     }
 
-    @DataProvider(name = "addpost")
-    public Object[][] addpost() {
+    @DataProvider(name = "addPost")
+    public Object[][] addPost() {
         return new Object[][]{
                 {
                         "helllooooooo"

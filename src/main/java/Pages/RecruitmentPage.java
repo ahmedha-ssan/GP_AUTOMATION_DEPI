@@ -31,11 +31,11 @@ public class RecruitmentPage {
     By noteField = By.xpath("//textarea[@placeholder=\"Type here\"]");
     By checkButton = By.xpath("//label[contains(text(),'Consent to keep data')]");
     By saveButton = By.xpath("//button[@type=\"submit\"]");
-    By vacancyOption = By.xpath("//span[contains(text(),\"Senior Support Specialist\")]");
+    By vacancyOption = By.xpath("//span[contains(text(),\"test\")]");
     By cancelButton = By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--ghost\"]");
     By successMSG = By.xpath("//div[@id='oxd-toaster_1']/div/div");
     By AssertPageTitle = By.xpath("//h6[text()='Recruitment']");
-
+    By datePath = By.xpath("//input[@placeholder='yyyy-dd-mm']");
 
     // Constructor
     public RecruitmentPage(WebDriver driver) {
@@ -44,7 +44,7 @@ public class RecruitmentPage {
 
     // Navigate to Recruitment module
     public void navigateToRecruitment() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.findElement(recruitmentModule).click();
     }
     public String getPageTitle(){
@@ -60,53 +60,45 @@ public class RecruitmentPage {
 
     // Click Add button
     public void clickAddButton() {
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(addButton)).click();
         WebElement addButtonElement = driver.findElement(addButton);
         addButtonElement.click();
-        //driver.findElement(addButton).click();
     }
+
     // Method to enter the first name
     public void enterFirstName(String firstName) {
         WebElement firstNameFieldElement = driver.findElement(firstNameField);
-        firstNameFieldElement.clear();
         firstNameFieldElement.sendKeys(firstName);
     }
 
     // Method to enter the middle name
     public void enterMiddleName(String middleName) {
         WebElement middleNameFieldElement = driver.findElement(middleNameField);
-        middleNameFieldElement.clear();
         middleNameFieldElement.sendKeys(middleName);
     }
 
     // Method to enter the last name
     public void enterLastName(String lastName) {
         WebElement lastNameFieldElement = driver.findElement(lastNameField);
-        lastNameFieldElement.clear();
         lastNameFieldElement.sendKeys(lastName);
     }
 
     // Method to enter the email
     public void enterEmail(String email) {
         WebElement emailFieldElement = driver.findElement(emailField);
-        emailFieldElement.clear();
         emailFieldElement.sendKeys(email);
     }
     public void enterContactNumber(String contactNumber) {
         WebElement contactNumberFieldElement = driver.findElement(contactNumberField);
-        contactNumberFieldElement.clear();
         contactNumberFieldElement.sendKeys(contactNumber);
     }
 
     public void enterKeywords(String keywords) {
         WebElement keywordsFieldElement = driver.findElement(keywordsField);
-        keywordsFieldElement.clear();
         keywordsFieldElement.sendKeys(keywords);
 
     }
     public void enterNote(String note) {
         WebElement noteFieldElement = driver.findElement(noteField);
-        noteFieldElement.clear();
         noteFieldElement.sendKeys(note);
     }
     public void enterCheckButton() {
@@ -134,7 +126,7 @@ public class RecruitmentPage {
 
     // Method to enter the date of application
     public void enterDateOfApplication(String date) {
-        WebElement dateField = driver.findElement(By.xpath("//input[@placeholder='yyyy-dd-mm']"));
+        WebElement dateField = driver.findElement(datePath);
         dateField.sendKeys(Keys.CONTROL + "a");
         dateField.sendKeys(Keys.DELETE);
         dateField.sendKeys(date);

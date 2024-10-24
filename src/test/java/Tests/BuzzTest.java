@@ -2,42 +2,38 @@ package Tests;
 import Base.baseTest;
 import Data.TestData;
 import Pages.BuzzPage;
+import io.qameta.allure.Owner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class BuzzTest extends baseTest {
+    String expectedMSG = "Success\nSuccessfully Saved";
+    String errorMSG = "Error message while adding a new post";
 
-    @Test(description = "Verify adding a new post", dataProvider = "addpost", dataProviderClass = TestData.class)
-    public void addpost_TC1( String captionpost) throws InterruptedException {
+    @Owner("Hanan")
+    @Test(description = "Verify adding a new post", dataProvider = "addPost", dataProviderClass = TestData.class)
+    public void addPost(String captionPost) {
         buzzpage =new BuzzPage(driver);
         buzzpage.navigateToBuzz();
-        buzzpage.addCaptionPost(captionpost);
-        buzzpage.clickpost();
-
-
+        buzzpage.addCaptionPost(captionPost);
+        buzzpage.clickPost();
     }
-    @Test(description = "assertion",dependsOnMethods = "addpost_TC1")
-    public void assertion( ) throws InterruptedException {
 
+    @Owner("Hanan")
+    @Test(description = "assertion",dependsOnMethods = "addPost")
+    public void assertion( ){
         String actualMSG = buzzpage.isSuccessMessageDisplayed();
-        String expectedMSG = "Success\nSuccessfully Saved";
-        Assert.assertEquals(actualMSG, expectedMSG, "Error message while adding a new post");
+        Assert.assertEquals(actualMSG, expectedMSG, errorMSG);
 
     }
-
+    @Owner("Hanan")
     @Test(description = "Verify delete  post",dependsOnMethods = "assertion")
-    public void deletepost_TC2( ) throws InterruptedException {
+    public void deletePost( ) {
         buzzpage =new BuzzPage(driver);
        // buzzpage.navigateToBuzz();
-        buzzpage.todelete();
-        buzzpage.clickdelete();
-        buzzpage.clickyesdelete();
-
-
-
-
-
-
+        buzzpage.toDelete();
+        buzzpage.clickDelete();
+        buzzpage.clickYesDelete();
     }
 
 }

@@ -8,6 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class RecruitmentTests extends baseTest {
+    String expectedPageTitleMSG = "Recruitment";
+    String errPageTitleMSG = "Failed to navigate to the Recruitment page.";
+    String expectedAssertSuccessMSG = "Success\nSuccessfully Saved";
+    String errAssertSuccessMSG = "Error message while adding a new candidate";
 
     @Owner("Ahmed")
     @Test(description = "Verify navigation to the Recruitment module")
@@ -16,7 +20,7 @@ public class RecruitmentTests extends baseTest {
         recruitmentPage.navigateToRecruitment();
         // Add assertion to verify the page has navigated successfully
         String pageTitle = recruitmentPage.getPageTitle();
-        Assert.assertEquals(pageTitle, "Recruitment", "Failed to navigate to the Recruitment page.");
+        Assert.assertEquals(pageTitle, expectedPageTitleMSG,errPageTitleMSG);
     }
 
     @Owner("Ahmed")
@@ -46,7 +50,6 @@ public class RecruitmentTests extends baseTest {
     public void AssertSuccessMessageDisplayed() {
         // Assert the existence of the success message after adding a new candidate
         String actualMSG = recruitmentPage.isSuccessMessageDisplayed();
-        String expectedMSG = "Success\nSuccessfully Saved";
-        Assert.assertEquals(actualMSG, expectedMSG, "Error message while adding a new candidate");
+        Assert.assertEquals(actualMSG, expectedAssertSuccessMSG, errAssertSuccessMSG);
     }
 }

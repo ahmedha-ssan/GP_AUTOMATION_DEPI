@@ -14,7 +14,7 @@ public class ClaimPage {
     By claimModule = By.xpath("//span[text()='Claim']");
     By myClaimTap = By.xpath("//a[text()='My Claims']");
     By viewDetailsButton = By.xpath("(//button[normalize-space()='View Details'])[3]\n");
-    //  //button[@class="oxd-button oxd-button--medium oxd-button--text oxd-table-cell-action-space"]
+    //Another valid xpath  //button[@class="oxd-button oxd-button--medium oxd-button--text oxd-table-cell-action-space"]
     By addExpenseButton = By.xpath("//button[@data-v-6a9dd8d1 and @type=\"button\"]//i[@class=\"oxd-icon bi-plus oxd-button-icon\"]");
     By expenseTypeDropdown = By.xpath("//div[text()= '-- Select --']");
     By optExpenseDropDown = By.xpath("//span[text()= 'Fuel Allowance']");
@@ -30,9 +30,10 @@ public class ClaimPage {
     public ClaimPage(WebDriver driver) {
         this.driver = driver;
     }
+
     // Navigate to Claims module
     public void navigateToClaims() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement claimModuleElement = driver.findElement(claimModule);
         claimModuleElement.click();
     }
@@ -91,7 +92,7 @@ public class ClaimPage {
     }
 
     // Click Submit button
-    public void clickSubmit() throws InterruptedException {
+    public void clickSubmit() {
         WebElement submitButtonElement = driver.findElement(submitButton);
         try {
             submitButtonElement.click();

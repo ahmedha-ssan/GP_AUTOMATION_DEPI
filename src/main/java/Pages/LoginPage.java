@@ -20,7 +20,7 @@ public class LoginPage {
     By logoutButton = By.xpath("//a[contains(text(),\"Logout\")]");
     By forgotPasswordLink = By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[4]/p");
     By resetPasswordButton = By.xpath("//button[@type=\"submit\"]");
-    By usernameforget=By.xpath("//input[@name=\"username\"]");
+    By userNameForget=By.xpath("//input[@name=\"username\"]");
 
     //constructor to int the driver
     public LoginPage(WebDriver drive) {
@@ -44,7 +44,6 @@ public class LoginPage {
         loginButtonElement.click();
     }
     public void clickDropdown() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
         WebElement userDropdownElement = driver.findElement(userDropdown);
         userDropdownElement.click();
     }
@@ -53,14 +52,12 @@ public class LoginPage {
         logoutButtonElement.click();
     }
     public void clickForgotPassword() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
         WebElement forgotPasswordElement = driver.findElement(forgotPasswordLink);
         forgotPasswordElement.click();
     }
-    public void usernameforgetfield(String username) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-        WebElement usernameforgetElement = driver.findElement(usernameforget);
-        usernameforgetElement.sendKeys(username);
+    public void userNameForgetField(String username) {
+        WebElement userNameForgetFieldElement = driver.findElement(userNameForget);
+        userNameForgetFieldElement.sendKeys(username);
     }
     public void resetPassword() {
         WebElement resetButtonElement = driver.findElement(resetPasswordButton);  // Using the updated XPath for the button

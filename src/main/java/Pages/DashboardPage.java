@@ -24,15 +24,13 @@ public class DashboardPage {
     By employeeDistributionByLocationWidget = By.xpath("//p[text()='Employee Distribution by Location']");
 
 
-
-
     // Constructor
     public DashboardPage(WebDriver driver) {
         this.driver = driver;
     }
     //method to extract dashboard header text
     public String getDashboardHeader() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         return driver.findElement(dashboardHeader).getText();
     }
     //click to expand or collapse the sidebar

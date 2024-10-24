@@ -4,49 +4,46 @@ import Base.baseTest;
 import Data.TestData;
 import Pages.AdminPage;
 
+import io.qameta.allure.Owner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AdminTest extends baseTest {
+    String expectedMSG = "Success\nSuccessfully Saved";
+    String ErrorMsg = "Error message while adding a new job title";
 
-
-
+    @Owner("Hanan")
     @Test(description = "Verify search for user", dataProvider = "searchData", dataProviderClass = TestData.class)
-    public void searchUser_TC1( String username, String empname) throws InterruptedException {
+    public void searchUser( String userName, String empName){
         adminPage = new AdminPage(driver);
         adminPage.navigateToAdmin();
         adminPage.setUsers_option();
-        adminPage.addusername(username);
-        adminPage.selectrole();
-        adminPage.addemployename(empname);
-        adminPage.selectstatus();
+        adminPage.addUserName(userName);
+        adminPage.selectRole();
+        adminPage.addEmployeeName(empName);
+        adminPage.selectStatus();
         adminPage.clickSearchButton();
 
     }
-
-    @Test(description = "Verify adding a new job title", dataProvider = "jobtitleData", dataProviderClass = TestData.class,dependsOnMethods = "searchUser_TC1")
-    public void addjobtitle_TC2(String JobTitle, String JobDescription, String resumeFilePath, String note) throws InterruptedException {
+    @Owner("Hanan")
+    @Test(description = "Verify adding a new job title", dataProvider = "jobTitleData", dataProviderClass = TestData.class,dependsOnMethods = "searchUser")
+    public void addJobTitle(String JobTitle, String JobDescription, String resumeFilePath, String note) {
         adminPage = new AdminPage(driver);
         adminPage.navigateToAdmin();
-        adminPage.setJobtitles_option();
+        adminPage.setJobTitles_option();
         adminPage.clickAddButton();
         adminPage.addJobTitle(JobTitle);
-        adminPage.addJobdescription(JobDescription);
+        adminPage.addJobDescription(JobDescription);
         adminPage.enterResumeFile(resumeFilePath);
         adminPage.enterNote(note);
         adminPage.clickSaveButton();
-
-
 }
 
-
-    @Test(description = "assertion ",dependsOnMethods = "addjobtitle_TC2")
-    public void assertion() throws InterruptedException {
-
+    @Owner("Hanan")
+    @Test(description = "assertion ",dependsOnMethods = "addJobTitle")
+    public void assertion(){
         String actualMSG = adminPage.isSuccessMessageDisplayed();
-        String expectedMSG = "Success\nSuccessfully Saved";
-        Assert.assertEquals(actualMSG, expectedMSG, "Error message while adding a new job title");
-
+        Assert.assertEquals(actualMSG, expectedMSG,ErrorMsg);
     }
 
 
