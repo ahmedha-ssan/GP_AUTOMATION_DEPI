@@ -131,4 +131,13 @@ public class TestData {
         };
     }
 
+    @DataProvider(name = "DeleteEmployeeData")
+    public Object[][] DeleteEmployeeData() {
+        return new Object[][]{
+                {
+                        "0303"
+                },
+        };
+    }
+
 }

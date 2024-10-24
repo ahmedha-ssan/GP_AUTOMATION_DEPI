@@ -23,6 +23,7 @@ public class AdminTest extends baseTest {
         adminPage.clickSearchButton();
 
     }
+
     @Test(description = "Verify adding a new job title", dataProvider = "jobtitleData", dataProviderClass = TestData.class,dependsOnMethods = "searchUser_TC1")
     public void addjobtitle_TC2(String JobTitle, String JobDescription, String resumeFilePath, String note) throws InterruptedException {
         adminPage = new AdminPage(driver);

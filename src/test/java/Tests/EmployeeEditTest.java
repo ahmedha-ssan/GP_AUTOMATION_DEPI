@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class EmployeeEditTest extends baseTest {
 
-    @Test(dataProvider = "EditEmployeeData", dataProviderClass = TestData.class)
+    @Test(dataProvider = "EditEmployeeData", dataProviderClass = TestData.class ,priority = 0)
     public void testEditEmployeeDetails(String id,String Username,String lastname) {
         employeeListPage = new EmployeeListPage(driver);
 
@@ -18,12 +18,21 @@ public class EmployeeEditTest extends baseTest {
         employeeListPage.usernamefeild(Username);
         employeeListPage.lastnamefeild(lastname);
         employeeListPage.SaveButtonn();
-
-    }
-    @Test(description = "Assert that success message is displayed",dependsOnMethods = {"testEditEmployeeDetails"})
-    public void AssertSuccessMessageDisplayed() {
         String actualMSG = employeeListPage.isSuccessMessageDisplayed();
         String expectedMSG = "Success\nSuccessfully Updated";
+        Assert.assertEquals(actualMSG, expectedMSG, "Error message while Editing");
+    }
+    @Test(dataProvider = "DeleteEmployeeData", dataProviderClass = TestData.class ,priority = 1)
+    public void testDeleteEmployee(String id) {
+        employeeListPage = new EmployeeListPage(driver);
+
+        employeeListPage.navigateToPIM();
+        employeeListPage.selectemploymentid(id);
+        employeeListPage.clickSearchButton();
+        employeeListPage.selectdeleteButton();
+        employeeListPage.selectconfirmButton();
+        String actualMSG = employeeListPage.isSuccessMessageDisplayed();
+        String expectedMSG = "Success\nSuccessfully Deleted";
         Assert.assertEquals(actualMSG, expectedMSG, "Error message while Editing");
     }
 }

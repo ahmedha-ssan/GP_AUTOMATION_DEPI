@@ -13,7 +13,6 @@ public class EmployeeListPage {
     WebDriverWait wait;
 
     // Locators
-    ////button[@class="oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin"]
     By pimMenu = By.xpath("//a[@href=\"/web/index.php/pim/viewPimModule\"]"); // Navigate to PIM
     By employmentid = By.xpath("//div[@class='oxd-grid-item oxd-grid-item--gutters']//input[@class='oxd-input oxd-input--active']");
     By searchButton = By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space\" ]");
@@ -23,7 +22,8 @@ public class EmployeeListPage {
     By Lastname=By.xpath("//input[@name=\"lastName\"]");
     By SaveButton=By.xpath("(//button[@type=\"submit\"])[1]");
     By successMSG = By.xpath("//div[@id='oxd-toaster_1']/div/div");
-
+    By DeleteButton=By.xpath("(//button[@class=\"oxd-icon-button oxd-table-cell-action-space\"])[2]");
+    By confirmbutton=By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin\"]");
     // Constructor to initialize WebDriver
     public EmployeeListPage(WebDriver driver) {
         this.driver = driver;
@@ -64,4 +64,11 @@ public class EmployeeListPage {
         WebElement msg = driver.findElement(successMSG);
         return msg.getText();
     }
+    public void selectdeleteButton() {
+        driver.findElement(DeleteButton).click();
+    }
+    public void selectconfirmButton() {
+        driver.findElement(confirmbutton).click();
+    }
+
 }

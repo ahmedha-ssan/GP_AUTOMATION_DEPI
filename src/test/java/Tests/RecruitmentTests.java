@@ -18,6 +18,7 @@ public class RecruitmentTests extends baseTest {
         String pageTitle = recruitmentPage.getPageTitle();
         Assert.assertEquals(pageTitle, "Recruitment", "Failed to navigate to the Recruitment page.");
     }
+
     @Owner("Ahmed")
     @Test( description = "Verify adding a new candidate with valid data", dataProvider = "RecruitmentTestData", dataProviderClass = TestData.class)
     public void addCandidateTestCase(String firstName, String middleName, String lastName, String email, String contactNumber, String resumeFilePath, String keywords, String applicationDate, String note){
@@ -39,6 +40,7 @@ public class RecruitmentTests extends baseTest {
         recruitmentPage.enterCheckButton();
         recruitmentPage.clickSaveButton();
     }
+
     @Owner("Ahmed")
     @Test(description = "Assert that success message is displayed",dependsOnMethods = {"addCandidateTestCase"})
     public void AssertSuccessMessageDisplayed() {

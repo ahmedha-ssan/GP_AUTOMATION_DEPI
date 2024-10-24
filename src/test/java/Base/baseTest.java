@@ -25,8 +25,8 @@ public class baseTest {
     protected EmployeeListPage employeeListPage;
     protected NavigationBarPage navigationBarPage;
     protected SideBarPage sideBarPage;
-
-    By userName = By.name("username");
+    protected BuzzPage buzzpage;
+    protected MyInfoPage myInfoPage;
 
     @BeforeClass
     public void setUp(){
@@ -56,11 +56,11 @@ public class baseTest {
         }
     }
 
-
-    @AfterMethod
-    public void tearDown(){
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//
+//    @AfterMethod
+//    public void tearDown(){
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 }

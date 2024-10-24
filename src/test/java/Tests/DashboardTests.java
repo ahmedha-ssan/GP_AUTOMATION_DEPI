@@ -18,6 +18,7 @@ public class DashboardTests extends baseTest {
     public void testWidgetInteractivity() {
         // Verify interactive elements within the widgets
         dashboardPage.clickExpandCollapseWidget();
+        dashboardPage.clickExpandCollapseWidget();
     }
 
     @Test

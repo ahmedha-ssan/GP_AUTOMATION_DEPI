@@ -18,7 +18,8 @@ public class MaintenancePage {
     By accessRecordsButton = By.xpath("//a[@class='oxd-topbar-body-nav-tab-item']");
     By employeeNameInputXPath = By.xpath("//input[@placeholder='Type for hints...']");
     By searchButton = By.xpath("//button[@type='submit' and contains(@class, 'oxd-button--secondary')]\n");
-    By employeeSuggestion = By.xpath("//div[@role='option' and contains(@class, 'oxd-autocomplete-option')]//span[contains(text(), 'JonathanChristopher  AndersonSmith')]");
+   // By employeeSuggestion = By.xpath("//div[@role='option' and contains(@class, 'oxd-autocomplete-option')]//span[contains(text(), 'JonathanChristopher  AndersonSmith')]");
+   By employeeSuggestion = By.xpath("//div[@role='option' and contains(@class, 'oxd-autocomplete-option')]//span[contains(text(), 'Peter Mac Anderson')]");
     By downloadButton = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div[2]/div/form/div[2]/button");
 
 
@@ -46,7 +47,7 @@ public class MaintenancePage {
     public void inputEmployeeName(String employeeName) {
         WebElement employeeNameElement = driver.findElement(employeeNameInputXPath);
         employeeNameElement.clear();
-        employeeNameElement.sendKeys(employeeName);
+       employeeNameElement.sendKeys(employeeName);
         wait.until(ExpectedConditions.elementToBeClickable(employeeSuggestion)).click();
     }
 
